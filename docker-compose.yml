@@ -5,24 +5,25 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    container_name: api
+    container_name: celestia-api
     restart: always
     ports:
-      - "23186:3000"
+      - "3000:3000"
     environment:
-      API_PORT: 23186
+      API_PORT: 3000
     volumes:
       - ./api:/src
     depends_on:
       - db
-    #   - cache
   db:
-    image: postgres:13
+    image: postgres:latest
+    container_name: celestia-postgres
+    restart: always
     environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: base
+      POSTGRES_USER: celestia
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: celestia
     ports:
-      - 8085:5432
+      - "8085:5432"
     volumes:
-      - ./dvdrental:/app/data/dvdrental
+      - ./db/netflix.sql:/docker-entrypoint-initdb.d/netflix.sql
