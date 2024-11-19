@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "build:api": "tsc",
-    "dev:api": "nodemon --exec ts-node src/main.ts",
-    "start:api": "npm run build:api && node dist/main.js"
+    "dev:api": "nodemon --exec ts-node src/express-api/main.ts",
+    "start:api": "npm run build:api && node dist/express-api/main.js"
   },
   "keywords": [],
   "author": "",
@@ -13,11 +13,14 @@
   "description": "",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "kysely": "^0.27.4",
+    "pg": "^8.13.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^22.5.0",
+    "@types/pg": "^8.11.10",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
