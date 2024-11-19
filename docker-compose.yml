@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   api:
@@ -12,7 +12,7 @@ services:
     environment:
       API_PORT: 3000
     volumes:
-      - ./api:/src
+      - ./api:/src:/express-api
     depends_on:
       - db
   db:
@@ -20,9 +20,9 @@ services:
     container_name: celestia-postgres
     restart: always
     environment:
-      POSTGRES_USER: celestia
+      POSTGRES_USER: celestia-admin
       POSTGRES_PASSWORD: pwd
-      POSTGRES_DB: celestia
+      POSTGRES_DB: celestia-db
     ports:
       - "8085:5432"
     volumes:
